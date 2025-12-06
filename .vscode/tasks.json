@@ -10,7 +10,8 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-Werror"
+                "-Wall",
+                "-Wextra"
             ],
             "options": {
                 "cwd": "C:/msys64/ucrt64/bin"
