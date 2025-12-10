@@ -31,7 +31,7 @@ int main()
     // get max count to determine height of histogram
     unsigned int max = 0;
     unsigned int i;
-    size_t n = sizeof(sizes)/sizeof(int);
+    size_t n = sizeof(sizes)/sizeof(unsigned int);
     for (i = 0; i < n; i++)
     {
         if (sizes[i] > max)
