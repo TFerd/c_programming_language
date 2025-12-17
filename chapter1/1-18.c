@@ -4,73 +4,77 @@
 
 #define MAX_LEN 1000
 
-// Loads next line into buffer
-void get_line(char buffer[]);
-
-// Removes trailing whitespace from input char[]
-void trim(char input[]);
-
-// Returns 1 if the input character is a blank, tab, or newline. 
-// Else, returns 0.
+int get_line_trimmed(char buffer[]);
 int is_blank(char c);
+void print_line(char line[]);
 
 int main()
 {
-    
-    // go forward to populate the array
-    // then, reverse until you reach a char,
-    // removing any tabs or whitespace.
-    // remove by just moving the '\0' char.
+    char buffer[MAX_LEN];
+    int status;
+
+    while ((status = get_line_trimmed(buffer)) == 0)
+    {
+        print_line(buffer);
+    }
 
     return 0;
 }
 
-// lets change this: keep track of last char. Once we find the new line
-// or EOF, set i+1 of last char to '\0'
-void get_line_trimmed()
+// Loads the next line of the input into buffer, removing trailing blanks
+int get_line_trimmed(char buffer[])
 {
-}
-
-
-void get_line(char buffer[])
-{
-    int c = getchar();
+    int c;
     int i = 0;
-    while ((c = getchar()) != EOF && c != '\n' && i < MAX_LEN)
+    int last_char = -1;
+
+    while (i < MAX_LEN && (c = getchar()) != EOF && c != '\n')
     {
+        if (is_blank(c) == 0)
+        {
+            last_char = i;
+        }
+
         buffer[i++] = c;
     }
 
-    if (c == '\n')
+    buffer[last_char + 1] = '\0';
+
+    if (c == EOF)
     {
-        buffer[i] = c;
-        i++
+        return 1;
     }
-
-    buffer[i] = '\0';
-}
-
-void trim(char input[])
-{
-    int i;
-
-    // go to back of array
-    while (input[i] != '\0' && i < MAX_LEN)
+    else 
     {
-        i++;
-    }
-
-    // reached back, go to next char
-    while (i >= 0 && input[i] && is_blank(input[i]) == 1)
-    {
-        
+        return 0;
     }
 }
 
+// Returns 1 if the input character is a blank, tab, or newline. 
+// Else, returns 0.
 int is_blank(char c)
 {
     if (c == ' ' || c == '\t' || c == '\n')
         return 1;
 
-    return 0
+    return 0;
 }
+
+// Prints input char[]
+void print_line(char line[])
+{
+    int i = 0;
+
+    // break early on empty line
+    if (line[i] == '\0')
+        return;
+
+    while (line[i] != '\0')
+    {
+        printf("%c", line[i++]);
+    }
+    
+    printf("|"); // marks end of line to test trailing whitespaces
+    printf("\n");
+}
+
