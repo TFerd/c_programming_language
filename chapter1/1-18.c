@@ -1,4 +1,4 @@
-// Remove trailing blanks and tabs from each line of input
+// 1-18: Remove trailing blanks and tabs from each line of input
 // and delete entirely empty blank lines
 #include <stdio.h>
 
