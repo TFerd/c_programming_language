@@ -31,7 +31,7 @@ int get_line(char buffer[], int max)
 {
 	int i, c;
 
-	for (i = 0; i < max && (c = getchar()) != '\n' && c != EOF; i++)
+	for (i = 0; i < max-1 && (c = getchar()) != '\n' && c != EOF; i++)
 	{
 		buffer[i] = c;
 	}

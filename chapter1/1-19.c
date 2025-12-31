@@ -30,7 +30,7 @@ int get_line(char buffer[])
 {
     int c;
     int i = 0;
-    while (i < MAX_LEN && (c = getchar()) != '\n' && c != EOF)
+    while (i < MAX_LEN-1 && (c = getchar()) != '\n' && c != EOF)
     {
         buffer[i++] = c;
     }

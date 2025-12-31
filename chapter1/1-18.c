@@ -28,7 +28,7 @@ int get_line_trimmed(char buffer[])
     int i = 0;
     int last_char = -1;
 
-    while (i < MAX_LEN && (c = getchar()) != EOF && c != '\n')
+    while (i < MAX_LEN-1 && (c = getchar()) != EOF && c != '\n')
     {
         if (is_blank(c) == 0)
         {

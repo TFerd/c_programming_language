@@ -32,7 +32,7 @@ int get_line(char buffer[], int max)
 	if (c == EOF)
 		return -1;
 
-	for (i = 0; i < max && c != EOF && c != '\n'; i++)
+	for (i = 0; i < max-1 && c != EOF && c != '\n'; i++)
 	{
 		buffer[i] = c;
 		c = getchar();

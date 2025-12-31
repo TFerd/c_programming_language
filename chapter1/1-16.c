@@ -31,7 +31,7 @@ int main()
         printf("The longest line was %d characters long:\n", longest_len);
         int c, i;
         
-        for (i = 0; i < MAX_LEN && longest[i] != '\0'; i++)
+        for (i = 0; i < MAX_LEN-1 && longest[i] != '\0'; i++)
             printf("%c", longest[i]);
     }
 
